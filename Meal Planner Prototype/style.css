@@ -1,0 +1,93 @@
+body {
+    font-family: 'Lora', serif; /* Body font */
+    background-color: #fff9c4; /* Soft yellow background */
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #2e7d32; /* Dark green for headings */
+    font-family: 'Montserrat', sans-serif; /* Heading font */
+}
+
+form {
+    background: #b2e0b2; /* Light green form background */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+button {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4CAF50; /* Medium green button */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2e7d32; /* Darker green on hover */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #ffffff; /* White list item background */
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+li button {
+    margin-left: 10px;
+}
+#weekly-meal-plan {
+    margin-top: 20px;
+}
+
+.day {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.day h3 {
+    margin: 0;
+}
+
+.day-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.day-form input {
+    margin-bottom: 5px;
+}
+
+.day-meal-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.day-calorie-count {
+    font-weight: bold;
+}
+
+#budget-input {
+    margin-top: 10px;
+    width: 100%; /* Full width for better usability */
+}
