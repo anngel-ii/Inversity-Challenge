@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const suggestionForm = document.getElementById("suggestion-form");
     const resultsDiv = document.getElementById("suggestion-results");
-    const apiKey = "306c88394fe24feb9b9dfc515cb2f1fa"; // Your Spoonacular API key
+    const apiKey = "31436c72a6124b4190c1b0ae054e4682"; // Your updated Spoonacular API key
 
     suggestionForm.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -16,14 +16,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function fetchSuggestions(budget) {
-        const apiURL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&maxPrice=${budget}&number=5`;
+        const apiURL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&maxCalories=${budget}&number=5`;
 
         fetch(apiURL)
-            .then(response => response.json())
-            .then(data => displaySuggestions(data.results))
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data && data.results) {
+                    displaySuggestions(data.results);
+                } else {
+                    resultsDiv.innerHTML = "No meal suggestions found.";
+                }
+            })
             .catch(error => {
                 console.error("Error fetching meal suggestions:", error);
-                resultsDiv.innerHTML = "There was an error fetching suggestions.";
+                resultsDiv.innerHTML = "There was an error fetching suggestions. Please try again later.";
             });
     }
 
@@ -45,15 +56,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const mealImage = document.createElement("img");
             mealImage.src = suggestion.image;
             mealImage.alt = suggestion.title;
+            mealImage.style.cursor = "pointer"; // Show that the image is clickable
 
-            const mealLink = document.createElement("a");
-            mealLink.href = `https://spoonacular.com/recipes/${suggestion.id}`;
-            mealLink.target = "_blank";
-            mealLink.textContent = "View Recipe";
+            // Clicking the image will lead to the recipe page
+            mealImage.addEventListener("click", () => {
+                window.open(`https://spoonacular.com/recipes/${suggestion.title.replace(/ /g, "-")}-${suggestion.id}`, '_blank');
+            });
 
             mealDiv.appendChild(mealTitle);
             mealDiv.appendChild(mealImage);
-            mealDiv.appendChild(mealLink);
 
             resultsDiv.appendChild(mealDiv);
         });
