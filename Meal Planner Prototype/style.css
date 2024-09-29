@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: 'Lora', serif; /* Body font */
     background-color: #fff9c4; /* Soft yellow background */
@@ -5,12 +6,67 @@ body {
     padding: 20px;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     color: #2e7d32; /* Dark green for headings */
     font-family: 'Montserrat', sans-serif; /* Heading font */
+    margin-bottom: 10px;
 }
 
-form {
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: 30px;
+}
+
+h3 {
+    font-size: 1.75em;
+}
+
+h4 {
+    font-size: 1.2em;
+    color: #1b5e20; /* Slightly darker green for sub-headings */
+}
+
+/* Motivational Quote Section */
+#motivational-quote-container {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Lora', serif;
+    font-size: 1em;
+    color: #555;
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+    z-index: 1000;
+}
+
+#motivational-quote-container.fade-out {
+    opacity: 0;
+}
+
+/* Streak Section */
+.streak-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.streak-section h3 {
+    margin: 0;
+}
+
+/* Meal Input Section */
+.meal-input-section {
     background: #b2e0b2; /* Light green form background */
     padding: 20px;
     border-radius: 5px;
@@ -18,76 +74,243 @@ form {
     margin-bottom: 20px;
 }
 
-input[type="text"],
-input[type="number"],
-button {
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.meal-input-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-button {
+.meal-input-section label {
+    margin-bottom: 5px;
+}
+
+.meal-input-section select,
+.meal-input-section input[type="text"],
+.meal-input-section input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.meal-input-section button {
+    width: 100%;
     background-color: #4CAF50; /* Medium green button */
     color: white;
     border: none;
     cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-button:hover {
+.meal-input-section button:hover {
     background-color: #2e7d32; /* Darker green on hover */
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    background: #ffffff; /* White list item background */
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 4px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-li button {
-    margin-left: 10px;
-}
+/* Weekly Meal Plan */
 #weekly-meal-plan {
-    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
 }
 
 .day {
-    border: 1px solid #ccc;
+    background: #c8e6c9; /* Slightly different light green for day sections */
+    border: 1px solid #a5d6a7;
     border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 15px;
+    width: 48%; /* Two columns layout */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 .day h3 {
-    margin: 0;
+    margin-top: 0;
 }
 
-.day-form {
+.edit-save-buttons {
     display: flex;
-    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
-.day-form input {
-    margin-bottom: 5px;
+.edit-save-buttons button {
+    padding: 5px 10px;
+    font-size: 0.9em;
+    background-color: #81c784; /* Lighter green */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-save-buttons button:hover {
+    background-color: #66bb6a; /* Darker green on hover */
+}
+
+.save-button {
+    background-color: #388e3c; /* Darker green for save button */
 }
 
 .day-meal-list {
     list-style-type: none;
     padding-left: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.day-meal-list li {
+    background: #ffffff; /* White list item background */
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.day-meal-list li button {
+    background-color: #e57373; /* Red delete button */
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background-color 0.3s;
+}
+
+.day-meal-list li button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
 }
 
 .day-calorie-count {
     font-weight: bold;
 }
 
-#budget-input {
+/* Total Calories Section */
+h3 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.5em;
+    color: #2e7d32;
+}
+
+/* Suggestions Section */
+h2 + button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #498b54; /* green button for suggestions */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+h2 + button:hover {
+    background-color: #2f6b2f; /* Darker green to on hover */
+}
+
+/* Community Comments Section */
+#comment-section {
+    margin-top: 30px;
+}
+
+#comment-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#comment-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#comment-section button {
+    background-color: #ff9800; /* Orange button for comments */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#comment-section button:hover {
+    background-color: #f57c00; /* Darker orange on hover */
+}
+
+#comment-list {
+    list-style-type: none;
+    padding-left: 0;
     margin-top: 10px;
-    width: 100%; /* Full width for better usability */
+}
+
+#comment-list li {
+    background: #ffe0b2; /* Light orange background for comments */
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Motivational Quote Styles */
+#motivational-quote-container {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Lora', serif;
+    font-size: 1em;
+    color: #555;
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+    z-index: 1000;
+}
+
+#motivational-quote-container.fade-out {
+    opacity: 0;
+}
+
+/* Buttons within Meal Items */
+.edit-button {
+    background-color: #4FC3F7; /* Light blue for edit button */
+}
+
+.edit-button:hover {
+    background-color: #039BE5; /* Darker blue on hover */
+}
+
+.delete-button {
+    background-color: #e57373; /* Red delete button */
+}
+
+.delete-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #weekly-meal-plan {
+        flex-direction: column;
+    }
+
+    .day {
+        width: 100%;
+    }
 }
