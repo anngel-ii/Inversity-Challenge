@@ -8,94 +8,138 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400&family=Montserrat:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Motivational Quote Section -->
+    <div id="motivational-quote-container">
+        <p id="motivational-quote">"Eat well, live well!"</p>
+    </div>
+
+    
+
     <h1>Meal Planner</h1>
 
-    <div style="text-align: right;">
+    <div class="streak-section">
         <h3>Streak: <span id="streak-count">0 🌱</span></h3>
         <button id="reset-streak-button">Reset Streak</button>
     </div>
 
     <!-- Meal Input Section -->
-    <div>
+    <div class="meal-input-section">
         <h2>Add Your Meal</h2>
-        <label for="day-select">Select Day:</label>
-        <select id="day-select" required>
-            <option value="">Select a day</option>
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
-        </select>
-        <br><br>
-        <input type="text" id="meal-input" placeholder="Enter meal" required>
-        <input type="number" id="calorie-input" placeholder="Enter calories" required>
-        <button id="add-meal-button">Add Meal</button>
+        <p class="subtitle">Select the day, add your meal and calories, then click "Add Meal."</p>
+        <form id="meal-form">
+            <label for="day-select">Select Day:</label>
+            <select id="day-select" required>
+                <option value="">Select a day</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+            <input type="text" id="meal-input" placeholder="Enter meal" required>
+            <input type="number" id="calorie-input" placeholder="Enter calories" required>
+            <button type="submit" id="add-meal-button">Add Meal</button>
+        </form>
     </div>
 
     <!-- Meal Display Section for Each Day -->
     <h2>Meals for the Week</h2>
+    <p class="subtitle">Edit your meals for each day and click "Save" when done.</p>
+    <div id="weekly-meal-plan">
+        <!-- Repeat this block for each day of the week -->
+        <div class="day" id="monday">
+            <h3>Monday</h3>
+            <div class="edit-save-buttons">
+                <button class="toggle-edit-button" onclick="toggleEdit('monday')">Edit</button>
+                <button class="save-button" id="monday-save-button" style="display: none;" onclick="saveMeals('monday')">Save</button>
+            </div>
+            <ul class="day-meal-list" id="monday-meals"></ul>
+            <h4>Total Calories for Monday: <span class="day-calorie-count" id="monday-calories">0</span></h4>
+        </div>
 
-    <!-- Repeat for each day of the week -->
-    <div>
-        <h3>Monday</h3>
-        <ul id="monday-meals" class="day-meal-list"></ul>
-        <h4>Total Calories for Monday: <span id="monday-calories" class="day-calorie-count">0</span></h4>
-    </div>
+        <!-- Repeat the above div block for Tuesday through Sunday -->
+        <div class="day" id="tuesday">
+            <h3>Tuesday</h3>
+            <div class="edit-save-buttons">
+                <button class="toggle-edit-button" onclick="toggleEdit('tuesday')">Edit</button>
+                <button class="save-button" id="tuesday-save-button" style="display: none;" onclick="saveMeals('tuesday')">Save</button>
+            </div>
+            <ul class="day-meal-list" id="tuesday-meals"></ul>
+            <h4>Total Calories for Tuesday: <span class="day-calorie-count" id="tuesday-calories">0</span></h4>
+        </div>
 
-    <div>
-        <h3>Tuesday</h3>
-        <ul id="tuesday-meals" class="day-meal-list"></ul>
-        <h4>Total Calories for Tuesday: <span id="tuesday-calories" class="day-calorie-count">0</span></h4>
-    </div>
+        <div class="day" id="wednesday">
+            <h3>Wednesday</h3>
+            <div class="edit-save-buttons">
+                <button class="toggle-edit-button" onclick="toggleEdit('wednesday')">Edit</button>
+                <button class="save-button" id="wednesday-save-button" style="display: none;" onclick="saveMeals('wednesday')">Save</button>
+            </div>
+            <ul class="day-meal-list" id="wednesday-meals"></ul>
+            <h4>Total Calories for Wednesday: <span class="day-calorie-count" id="wednesday-calories">0</span></h4>
+        </div>
 
-    <div>
-        <h3>Wednesday</h3>
-        <ul id="wednesday-meals" class="day-meal-list"></ul>
-        <h4>Total Calories for Wednesday: <span id="wednesday-calories" class="day-calorie-count">0</span></h4>
-    </div>
+        <div class="day" id="thursday">
+            <h3>Thursday</h3>
+            <div class="edit-save-buttons">
+                <button class="toggle-edit-button" onclick="toggleEdit('thursday')">Edit</button>
+                <button class="save-button" id="thursday-save-button" style="display: none;" onclick="saveMeals('thursday')">Save</button>
+            </div>
+            <ul class="day-meal-list" id="thursday-meals"></ul>
+            <h4>Total Calories for Thursday: <span class="day-calorie-count" id="thursday-calories">0</span></h4>
+        </div>
 
-    <div>
-        <h3>Thursday</h3>
-        <ul id="thursday-meals" class="day-meal-list"></ul>
-        <h4>Total Calories for Thursday: <span id="thursday-calories" class="day-calorie-count">0</span></h4>
-    </div>
+        <div class="day" id="friday">
+            <h3>Friday</h3>
+            <div class="edit-save-buttons">
+                <button class="toggle-edit-button" onclick="toggleEdit('friday')">Edit</button>
+                <button class="save-button" id="friday-save-button" style="display: none;" onclick="saveMeals('friday')">Save</button>
+            </div>
+            <ul class="day-meal-list" id="friday-meals"></ul>
+            <h4>Total Calories for Friday: <span class="day-calorie-count" id="friday-calories">0</span></h4>
+        </div>
 
-    <div>
-        <h3>Friday</h3>
-        <ul id="friday-meals" class="day-meal-list"></ul>
-        <h4>Total Calories for Friday: <span id="friday-calories" class="day-calorie-count">0</span></h4>
-    </div>
+        <div class="day" id="saturday">
+            <h3>Saturday</h3>
+            <div class="edit-save-buttons">
+                <button class="toggle-edit-button" onclick="toggleEdit('saturday')">Edit</button>
+                <button class="save-button" id="saturday-save-button" style="display: none;" onclick="saveMeals('saturday')">Save</button>
+            </div>
+            <ul class="day-meal-list" id="saturday-meals"></ul>
+            <h4>Total Calories for Saturday: <span class="day-calorie-count" id="saturday-calories">0</span></h4>
+        </div>
 
-    <div>
-        <h3>Saturday</h3>
-        <ul id="saturday-meals" class="day-meal-list"></ul>
-        <h4>Total Calories for Saturday: <span id="saturday-calories" class="day-calorie-count">0</span></h4>
-    </div>
-
-    <div>
-        <h3>Sunday</h3>
-        <ul id="sunday-meals" class="day-meal-list"></ul>
-        <h4>Total Calories for Sunday: <span id="sunday-calories" class="day-calorie-count">0</span></h4>
+        <div class="day" id="sunday">
+            <h3>Sunday</h3>
+            <div class="edit-save-buttons">
+                <button class="toggle-edit-button" onclick="toggleEdit('sunday')">Edit</button>
+                <button class="save-button" id="sunday-save-button" style="display: none;" onclick="saveMeals('sunday')">Save</button>
+            </div>
+            <ul class="day-meal-list" id="sunday-meals"></ul>
+            <h4>Total Calories for Sunday: <span class="day-calorie-count" id="sunday-calories">0</span></h4>
+        </div>
     </div>
 
     <!-- Total Calories for the Week -->
     <h3>Total Calories for the Week: <span id="calorie-count">0</span></h3>
 
-    
-    <h2>Suggestions</h2>
-    <button onclick="window.location.href='suggestions.html'">View Meal Suggestions</button>
-    
+    <!-- Suggestions Section -->
+    <h2>Meal Suggestions🍽</h2>
+
+        <button onclick="window.location.href='suggestions.html'" id="view-suggestions-btn">View Meal Suggestions</button>
+    </div>
+
+    <p class="subtitle">Get inspired with healthy meal ideas.</p>
+
+    <!-- Community Comments Section -->
     <h2>Community</h2>
+    <p class="subtitle">Share your thoughts and meal journey with others.</p>
     <form id="comment-form">
-        <input type="text" id="comment-input" placeholder="Enter comment" required>
+        <input type="text" id="comment-input" placeholder="Enter comment" maxlength="200" required>
         <button type="submit">Add Comment</button>
     </form>
-    
     <ul id="comment-list"></ul>
-
 
     <script src="script.js"></script>
 </body>
